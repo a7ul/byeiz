@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon index.js",
-    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "start": "pm2-runtime start index.js -i max --env production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "ISC",
