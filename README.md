@@ -1,4 +1,4 @@
-# byemck
+# byeiz
 
 A fun goodbye console web service made in Javascript.
 
@@ -8,13 +8,11 @@ Blog post: https://medium.com/@atulanand94/building-web-based-uis-for-terminals-
 
 It is hosted on heroku here:
 
-https://byemck.herokuapp.com/
+https://byeiz.herokuapp.com/
 
 or here
 
-http://byemck.atulr.com/
-
-
+http://byeiz.atulr.com/
 
 # To run locally:
 
@@ -33,4 +31,3 @@ After that open another terminal and do:
 or
 
 `wget -q -O - http://localhost:3000/`
-

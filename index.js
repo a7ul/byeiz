@@ -23,7 +23,7 @@ app.use('*', (req, res) => {
   const userAgent = req.headers['user-agent'];
   if (util.isCommandline(userAgent)) {
     return res.send(`
-    Hit: curl http://byemck.atulr.com/
+    Hit: curl http://byeiz.atulr.com/
 
     You are trying to hit an invalid route!
     \n`);

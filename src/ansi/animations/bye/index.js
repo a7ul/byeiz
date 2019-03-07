@@ -2,8 +2,8 @@
 const symbols = require('../../symbols');
 
 const delay = async millisec => new Promise((resolve) => {
-  setTimeout(() => resolve(), millisec);
-});
+    setTimeout(() => resolve(), millisec);
+  });
 
 const frames = {
   hi: (text = '') => `
@@ -113,13 +113,18 @@ ${header}
  `,
 };
 
-
 const animHi = async (stream) => {
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.hi('Hi 👋'));
+  stream.push(frames.hi('Hej 👋'));
   await delay(1500);
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.lastDay(' Today is my last day here ☹️', 'I wanted to take a moment to', 'let you know how much I’ve enjoyed my time here...'));
+  stream.push(
+    frames.lastDay(
+      ' Today is my last day here ☹️',
+      'I wanted to take a moment to',
+      'let you know how much I’ve enjoyed my time here...',
+    ),
+  );
   await delay(5000);
 };
 
@@ -129,7 +134,9 @@ const animCollege = async (stream) => {
     stream.push(frames.college('I joined as a 🏫 college graduate', 'in 2015'));
     await delay(600);
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.collegeCloseEye('I joined as a 🏫 college graduate', 'in 2015'));
+    stream.push(
+      frames.collegeCloseEye('I joined as a 🏫 college graduate', 'in 2015'),
+    );
     await delay(500);
   }
   stream.push(symbols.PAGE_BREAK);
@@ -148,10 +155,20 @@ const animCollege = async (stream) => {
 const animIntern = async (stream) => {
   for (let i = 0; i < 4; i += 1) {
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.intern('Lots of learnings📚, mistakes🔥 and struggles💀', 'later..'));
+    stream.push(
+      frames.intern(
+        'Lots of learnings📚, mistakes🔥 and struggles💀',
+        'later..',
+      ),
+    );
     await delay(600);
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.internCloseEyes('Lots of learnings📚, mistakes🔥 and struggles💀', 'later...'));
+    stream.push(
+      frames.internCloseEyes(
+        'Lots of learnings📚, mistakes🔥 and struggles💀',
+        'later...',
+      ),
+    );
     await delay(500);
   }
   stream.push(symbols.PAGE_BREAK);
@@ -170,19 +187,37 @@ const animIntern = async (stream) => {
 const animFTE = async (stream) => {
   for (let i = 0; i < 8; i += 1) {
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.fte('Things that went well: Memories💐, Friendships😎 & *Values*🌈', ' Things to improve: Bugs🐞, escalations🔪 & nightouts🤤', 'Last 3 years..'));
+    stream.push(
+      frames.fte(
+        'Things that went well: Memories💐, Friendships😎 & *Values*🌈',
+        ' Things to improve: Bugs🐞, escalations🔪 & nightouts🤤',
+        'Last 3 years..',
+      ),
+    );
     await delay(600);
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.fteCloseEyes('Things that went well: Memories💐, Friendships😎 & *Values*🌈', ' Things to improve: Bugs🐞, escalations🔪 & nightouts🤤', 'Last 3 years...'));
+    stream.push(
+      frames.fteCloseEyes(
+        'Things that went well: Memories💐, Friendships😎 & *Values*🌈',
+        ' Things to improve: Bugs🐞, escalations🔪 & nightouts🤤',
+        'Last 3 years...',
+      ),
+    );
     await delay(500);
   }
 
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.fte('PEOPLE !!! 🎉', '', 'Things I\'ll miss 😞 '));
+  stream.push(frames.fte('PEOPLE !!! 🎉', '', "Things I'll miss 😞 "));
   await delay(3000);
 
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.fte('PEOPLE !!!', ' Also: fancy business class flights, hotels & parties 😜 ', 'Things I\'ll miss 😞 '));
+  stream.push(
+    frames.fte(
+      'PEOPLE !!!',
+      ' Also: fancy business class flights, hotels & parties 😜 ',
+      "Things I'll miss 😞 ",
+    ),
+  );
   await delay(5000);
 
   for (let i = 0; i < 4; i += 1) {
@@ -198,14 +233,15 @@ const animFTE = async (stream) => {
 
 const animExMck = async (stream) => {
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.exmck(
-    'I hope we can keep in touch 🙏',
-    'My Email: atulanand94@gmail.com',
-    'Website: http://atulr.com',
-    'Thank you for everything 🙂 ...',
-  ));
+  stream.push(
+    frames.exmck(
+      'I hope we can keep in touch 🙏',
+      'My Email: atulanand94@gmail.com',
+      'Website: http://atulr.com',
+      'Thank you for everything 🙂 ...',
+    ),
+  );
 };
-
 
 module.exports = async (stream) => {
   await animHi(stream);
