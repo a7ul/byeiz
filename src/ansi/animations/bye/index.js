@@ -1,254 +1,186 @@
 /* eslint-disable no-await-in-loop */
-const symbols = require('../../symbols');
+const symbols = require("../../symbols");
 
-const delay = async millisec => new Promise((resolve) => {
+const delay = async millisec =>
+  new Promise(resolve => {
     setTimeout(() => resolve(), millisec);
   });
 
 const frames = {
-  hi: (text = '') => `
+  hi: (text = "") => `
 
-   {\\__/}
-    (●_●)    ${text}
+    (__]__
+    (●‿●)    ${text}
     (> <)
 
 `,
-  lastDay: (text1 = '', text2 = '', text3 = '') => `
+  lastDay: (text1 = "", text2 = "", text3 = "") => `
 
-   {\\__/}   ${text1}
+    (__]__  ${text1}
     (●_●)    ${text2}
     (>  )>   ${text3}
 
 `,
-  college: (text1 = '', text2 = '') => `
+  lastDayCloseEye: (text1 = "", text2 = "", text3 = "") => `
 
-    (__]__
-    (●_●)    ${text1}
-    (> <)    ${text2}
-
-   `,
-  collegeCloseEye: (text1 = '', text2 = '') => `
-
-    (__]__
-    ( _ )    ${text1}
-    (> <)    ${text2}
-
-   `,
-  levelupCollege: () => `
-  Basically,
-    (__]__     ==== LEVEL UP =====        ~~~
-    (●_●)    ~ UNEMPLOYED -> INTERN ~    (●_●)
-    (> <)      ===================      <(   )>
-
-   `,
-  levelupCollegeBlink: () => `
-  Basically,
-    (__]__     ==== LEVEL UP =====        ~~~
-    (●_●)    ~ UNEMPLOYED to INTERN ~    (●_●)
-    (> <)      ===================      <(   )>
-
-   `,
-  intern: (text1 = '', text2 = '') => `
-
-   ~~~        ${text1}
-  (●_●)       ${text2}
-  (> <)
-
- `,
-  internCloseEyes: (text1 = '', text2 = '') => `
-
-   ~~~        ${text1}
-  ( _ )       ${text2}
-  (> <)
-
- `,
-  levelupIntern: () => `
-Finally,
-   ~~~       ==== LEVEL UP =====        ___
-  (●_●)       ~ INTERN -> FTE ~        (●_●)
-  (> <)      ===================      <[ \\/ ]>
-
- `,
-  levelupInternBlink: () => `
-Finally,
-   ~~~       ==== LEVEL UP =====        ___
-  (●_●)       ~ INTERN to FTE ~        (●_●)
-  (> <)      ===================      <[ \\/ ]>
-
- `,
-  fte: (text1 = '', text2 = '', header = '') => `
-${header}
-   ___
-  (●_●)       ${text1}
- <[ \\/ ]>    ${text2}
+    (__]__  ${text1}
+    ( _ )    ${text2}
+    (>  )>   ${text3}
 
 `,
-  fteCloseEyes: (text1 = '', text2 = '', header = '') => `
-${header}
-   ___
-  ( _ )       ${text1}
- <[ \\/ ]>    ${text2}
-
+  plane: (text1, text2, text3) => `
+         __|__         ${text1}
+  --@--@--(_)--@--@--  ${text2}
+                       ${text3}
+  `,
+  planeRun: (text1, text2, text3) => `
+         __|__         ${text1}
+  --o--o--(_)--o--o--  ${text2}
+                       ${text3}
+  `,
+  planeLand: (text1, text2, text3) => `
+         __|__         ${text1}
+  --o--o--(_)--o--o--  ${text2}
+       !   !   !       ${text3}
 `,
-  levelupMck: () => `
-And now,
-   ___       ==== LEVEL UP =====        ^^^
-  (●_●)       ~ MCK -> Ex-MCK ~        (●_●)
- <[ \\/ ]>    ===================       (> <)
 
+  izettle: (text1 = "", text2 = "", header = "") => `
+  ${header}
+   =======
+      /😎     ${text1} 
+  🤘 ///  🤘  ${text2}
+    ///
+   =======  
 `,
-  levelupMckBlink: () => `
-And now,
-   ___       ==== LEVEL UP =====        ^^^
-  (●_●)       ~ MCK to Ex-MCK ~        (■_■)
- <[ \\/ ]>    ===================       (> <)
-
+  izettleClose: (text1 = "", text2 = "", header = "") => `
+  ${header}
+   =======
+      /😎     ${text1} 
+  🤟  ///  🤟   ${text2}
+    ///
+   =======  
 `,
-  exmck: (text1 = '', text2 = '', text3 = '', header = '') => `
-${header}
-   ^^^        ${text1}
-  (■_■)       ${text2}
-  (> <)       ${text3}
+  exizettle: (text1 = "", text2 = "", text3 = "", h = "", h2 = "") => `
+${h}
 
- `,
+   ^^^        ${h2}
+  (■‿■)       ${text1}
+  (> <)       ${text2}
+              ${text3}
+ `
 };
 
-const animHi = async (stream) => {
+const animHi = async stream => {
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.hi('Hej 👋'));
+  stream.push(frames.hi("Hej 👋"));
   await delay(1500);
-  stream.push(symbols.PAGE_BREAK);
-  stream.push(
-    frames.lastDay(
-      ' Today is my last day here ☹️',
-      'I wanted to take a moment to',
-      'let you know how much I’ve enjoyed my time here...',
-    ),
-  );
-  await delay(5000);
-};
-
-const animCollege = async (stream) => {
+  const messages = [
+    " Today is my last day here ☹️",
+    "I wanted to take a moment to",
+    "let you know how much I’ve enjoyed my time here..."
+  ];
   for (let i = 0; i < 5; i += 1) {
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.college('I joined as a 🏫 college graduate', 'in 2015'));
-    await delay(600);
+    stream.push(frames.lastDay(...messages));
+    await delay(500);
     stream.push(symbols.PAGE_BREAK);
-    stream.push(
-      frames.collegeCloseEye('I joined as a 🏫 college graduate', 'in 2015'),
-    );
+    stream.push(frames.lastDayCloseEye(...messages));
     await delay(500);
   }
+};
+
+const animMovingToStockholm = async stream => {
+  const messages = [
+    "I moved from India 🇮🇳",
+    "on Sept 2018",
+    "to join iZettle 🚀"
+  ];
+  for (let i = 0; i < 5; i += 1) {
+    stream.push(symbols.PAGE_BREAK);
+    stream.push(frames.plane(...messages));
+    await delay(600);
+    stream.push(symbols.PAGE_BREAK);
+    stream.push(frames.planeRun(...messages));
+    await delay(600);
+  }
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.college());
 
   for (let i = 0; i < 5; i += 1) {
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.levelupCollegeBlink());
+    stream.push(
+      frames.planeLand(
+        "It was a big change 😅",
+        "But iZettle made me feel",
+        "like home 🏠"
+      )
+    );
     await delay(500);
     stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.levelupCollege());
+    stream.push(
+      frames.planeLand(
+        "It was a big change 😅",
+        "But iZettle made me feel",
+        "like home ❤️"
+      )
+    );
     await delay(600);
   }
 };
 
-const animIntern = async (stream) => {
-  for (let i = 0; i < 4; i += 1) {
-    stream.push(symbols.PAGE_BREAK);
-    stream.push(
-      frames.intern(
-        'Lots of learnings📚, mistakes🔥 and struggles💀',
-        'later..',
-      ),
-    );
-    await delay(600);
-    stream.push(symbols.PAGE_BREAK);
-    stream.push(
-      frames.internCloseEyes(
-        'Lots of learnings📚, mistakes🔥 and struggles💀',
-        'later...',
-      ),
-    );
-    await delay(500);
-  }
-  stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.intern());
-
-  for (let i = 0; i < 4; i += 1) {
-    stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.levelupInternBlink());
-    await delay(500);
-    stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.levelupIntern());
-    await delay(600);
-  }
-};
-
-const animFTE = async (stream) => {
+const animHappyWork = async stream => {
+  const messages = [
+    "I am taking with me: ",
+    "Memories💐, Friendships😎 & lots of learnings 🌈",
+    "Though my time here was short."
+  ];
   for (let i = 0; i < 8; i += 1) {
     stream.push(symbols.PAGE_BREAK);
-    stream.push(
-      frames.fte(
-        'Things that went well: Memories💐, Friendships😎 & *Values*🌈',
-        ' Things to improve: Bugs🐞, escalations🔪 & nightouts🤤',
-        'Last 3 years..',
-      ),
-    );
+    stream.push(frames.izettle(...messages));
     await delay(600);
     stream.push(symbols.PAGE_BREAK);
-    stream.push(
-      frames.fteCloseEyes(
-        'Things that went well: Memories💐, Friendships😎 & *Values*🌈',
-        ' Things to improve: Bugs🐞, escalations🔪 & nightouts🤤',
-        'Last 3 years...',
-      ),
-    );
+    stream.push(frames.izettleClose(...messages));
     await delay(500);
   }
 
   stream.push(symbols.PAGE_BREAK);
-  stream.push(frames.fte('PEOPLE !!! 🎉', '', "Things I'll miss 😞 "));
+  stream.push(
+    frames.izettle(
+      "All my amazing friends and colleagues !!! 🎉",
+      "",
+      "I'll miss 😞 "
+    )
+  );
   await delay(3000);
 
   stream.push(symbols.PAGE_BREAK);
   stream.push(
-    frames.fte(
-      'PEOPLE !!!',
-      ' Also: fancy business class flights, hotels & parties 😜 ',
-      "Things I'll miss 😞 ",
-    ),
+    frames.izettleClose(
+      "All my amazing friends and colleagues !!! 🎉",
+      "Also: The kickass EC-Team 😎🤘 ",
+      "I'll miss 😞 "
+    )
   );
   await delay(5000);
-
-  for (let i = 0; i < 4; i += 1) {
-    stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.levelupMckBlink());
-    await delay(500);
-    stream.push(symbols.PAGE_BREAK);
-    stream.push(frames.levelupMck());
-    await delay(600);
-  }
-  await delay(1000);
 };
 
-const animExMck = async (stream) => {
+const animExIz = async stream => {
   stream.push(symbols.PAGE_BREAK);
   stream.push(
-    frames.exmck(
-      'I hope we can keep in touch 🙏',
-      'My Email: atulanand94@gmail.com',
-      'Website: http://atulr.com',
-      'Thank you for everything 🙂 ...',
-    ),
+    frames.exizettle(
+      "My Email: atulanand94@gmail.com",
+      "LinkedIn: https://www.linkedin.com/in/atulanand94/",
+      "Website: https://blog.atulr.com",
+      "Thank you for everything 🙂 and keep rocking! 🚀",
+      "I hope we can keep in touch 🙏"
+    )
   );
 };
 
-module.exports = async (stream) => {
+module.exports = async stream => {
   await animHi(stream);
-  await animCollege(stream);
-  await animIntern(stream);
-  await animFTE(stream);
-  await animExMck(stream);
-  stream.push('\n');
+  await animMovingToStockholm(stream);
+  await animHappyWork(stream);
+  await animExIz(stream);
+  stream.push("\n");
   stream.push(null);
 };

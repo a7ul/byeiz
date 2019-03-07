@@ -1,3 +1,7 @@
 module.exports = {
-    "extends": "airbnb-base"
+  env: {
+    browser: false,
+    node: true
+  },
+  extends: ["airbnb-base", "plugin:prettier/recommended"]
 };
