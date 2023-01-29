@@ -2,8 +2,6 @@ const express = require("express");
 const util = require("./src/util");
 const bye = require("./src/ansi/animations/bye");
 
-const PORT = process.env.PORT || 3000;
-
 const app = express();
 
 // bye bye example
@@ -28,7 +26,8 @@ app.use("*", (req, res) => {
     You are trying to hit an invalid route!
     \n`);
   }
-  res.redirect("/");
+  return res.redirect("/");
 });
 
-app.listen(PORT, () => console.log(`bye bye app listening on port ${PORT}!`));
+exports.byeiz = app;
+// app.listen(3000, () => console.log(`bye bye app listening on port ${3000}!`));
