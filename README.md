@@ -6,11 +6,7 @@ Blog post: https://medium.com/@atulanand94/building-web-based-uis-for-terminals-
 
 # Demo version:
 
-It is hosted on heroku here:
-
-https://byeiz.herokuapp.com/
-
-or here
+It is hosted on GCP here:
 
 http://byeiz.atulr.com/
 
